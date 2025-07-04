@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>car.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string&gt;
+
+#include &lt;iostream&gt;
+#include &lt;memory&gt;
+
+using namespace std;
+
+enum CarType
+{
+    SEDAN = 1,
+    SUV,
+    TRUCK,
+    MAX_CAR_TYPE,
+};
+
+enum Engine
+{
+    GM = 1,
+    TOYOTA,
+    WIA,
+    MAX_ENGINE_TYPE,
+};
+
+enum brakeSystem
+{
+    MANDO = 1,
+    CONTINENTAL,
+    BOSCH_B,
+    MAX_BRAKE_SYSTEM_TYPE,
+};
+
+enum SteeringSystem
+{
+    BOSCH_S = 1,
+    MOBIS,
+    MAX_STEERING_SYSTEM_TYPE,
+};
+
+class Car {
+public:
+    virtual void produceComponent() = 0;
+<span style = "background-color:#fdd">    virtual ~Car() {}</span>
+};
+
+class   SedanType : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "Â÷·® Å¸ÀÔÀ¸·Î SedanÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class   SuvType : public Car {
+public:
+    void produceComponent() override { std::cout &lt;&lt; "Â÷·® Å¸ÀÔÀ¸·Î SUVÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }
+};
+
+class   TruckType : public Car {
+public:
+    void produceComponent() override { std::cout &lt;&lt; "Â÷·® Å¸ÀÔÀ¸·Î TruckÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }
+};
+
+class   GmEngine : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "GM ¿£ÁøÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class   ToyotaEngine : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "TOYOTA ¿£ÁøÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class   WiaEngine : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "WIA ¿£ÁøÀ» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class MandoBrakeSystem : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "MANDO Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class ContinentalBrakeSystem : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "CONTINENTAL Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class BoschBrakeSystem : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "BOSCH Á¦µ¿ÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+
+class BoschSteeringSystem : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "BOSCH Á¶ÇâÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class MobisSteeringSystem : public Car {
+public:
+<span style = "background-color:#fdd">    void produceComponent() override { std::cout &lt;&lt; "MOBIS Á¶ÇâÀåÄ¡¸¦ ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.\n"; }</span>
+};
+
+class Factory {
+private:
+    int car_type;
+    int engine_sel;
+    int brake_sel;
+    int steering_sel;
+public:
+    virtual std::unique_ptr&lt;Car&gt; createType() = 0;
+    virtual std::unique_ptr&lt;Car&gt; createEngine() = 0;
+    virtual std::unique_ptr&lt;Car&gt; createBrakeSystem() = 0;
+    virtual std::unique_ptr&lt;Car&gt; createSteeringSystem() = 0;
+<span style = "background-color:#dfd">    void setCarType(int type) { car_type = type; }
+    void setEngine(int type) { engine_sel = type; }
+    void setBrake(int type) { brake_sel = type; }
+    void setSteering(int type) { steering_sel = type; }
+    int getCarType(void) { return car_type; }
+    int getEngine(void) { return engine_sel; }
+    int getBrake(void) { return brake_sel; }
+    int getSteering(void) { return steering_sel; }
+    virtual ~Factory() {}</span>
+};
+
+class PersonalFactory : public Factory {
+public:
+<span style = "background-color:#fdd">    std::unique_ptr&lt;Car&gt; createType() override {
+        int car_type_ = Factory::getCarType();
+        if (car_type_ == SEDAN)
+            return std::make_unique&lt;SedanType&gt;();
+        if (car_type_ == SUV)
+            return std::make_unique&lt;SedanType&gt;();
+        if (car_type_ == TRUCK)
+            return std::make_unique&lt;SedanType&gt;();
+    }
+    std::unique_ptr&lt;Car&gt; createEngine() override {
+        int engine_ = Factory::getEngine();
+        if (engine_ == GM)
+            return std::make_unique&lt;GmEngine&gt;();
+        if (engine_ == TOYOTA)
+            return std::make_unique&lt;ToyotaEngine&gt;();
+        if (engine_ == WIA)
+            return std::make_unique&lt;WiaEngine&gt;();
+    }
+    std::unique_ptr&lt;Car&gt; createBrakeSystem() override {
+        int brake_ = Factory::getBrake();
+        if (brake_ == MANDO)
+            return std::make_unique&lt;MandoBrakeSystem&gt;();
+        if (brake_ == CONTINENTAL)
+            return std::make_unique&lt;ContinentalBrakeSystem&gt;();
+        if (brake_ == BOSCH_B)
+            return std::make_unique&lt;BoschBrakeSystem&gt;();   
+    }
+    std::unique_ptr&lt;Car&gt; createSteeringSystem() override {
+        int steering_ = Factory::getBrake();
+        if (steering_ == BOSCH_S)
+            return std::make_unique&lt;BoschSteeringSystem&gt;();
+        if (steering_ == MOBIS)
+            return std::make_unique&lt;MobisSteeringSystem&gt;();
+    }</span>
+};
+
+class Custumer {
+private:
+    std::unique_ptr&lt;Factory&gt; _factory;
+
+public:
+    Custumer(std::unique_ptr&lt;Factory&gt; f) : _factory(std::move(f)) {}
+
+    void drive()
+    {
+        _factory-&gt;createType()-&gt;produceComponent();
+        _factory-&gt;createEngine()-&gt;produceComponent();
+        _factory-&gt;createBrakeSystem()-&gt;produceComponent();
+        _factory-&gt;createSteeringSystem()-&gt;produceComponent();
+    }
+
+    void showType()
+    {
+        _factory-&gt;createType()-&gt;produceComponent();
+    }
+
+    void showEngine()
+    {
+        _factory-&gt;createEngine()-&gt;produceComponent();
+    }
+
+    void showBrakeSystem()
+    {
+        _factory-&gt;createBrakeSystem()-&gt;produceComponent();
+    }
+    void showSteeringSystem()
+    {
+        _factory-&gt;createSteeringSystem()-&gt;produceComponent();
+    }
+};
+
+//int main() {
+//    std::unique_ptr&lt;Factory&gt; factory = std::make_unique&lt;PersonalFactory&gt;();
+//    Custumer custumer(std::move(factory));
+//    custumer.drive();
+//
+//    return 0;
+//}</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>

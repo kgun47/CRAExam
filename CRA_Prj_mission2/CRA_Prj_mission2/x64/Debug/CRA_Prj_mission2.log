@@ -1,0 +1,12 @@
+﻿  assemble.cpp
+  car.cpp
+  코드를 생성하고 있습니다...
+  car_test.cpp
+C:\Users\User\source\repos\CRAExam\CRA_Prj_mission2\CRA_Prj_mission2\car.cpp(136,1): warning C4715: 'PersonalFactory::createType': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\User\source\repos\CRAExam\CRA_Prj_mission2\CRA_Prj_mission2\car.cpp(161,1): warning C4715: 'PersonalFactory::createSteeringSystem': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\User\source\repos\CRAExam\CRA_Prj_mission2\CRA_Prj_mission2\car.cpp(154,1): warning C4715: 'PersonalFactory::createBrakeSystem': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\User\source\repos\CRAExam\CRA_Prj_mission2\CRA_Prj_mission2\car.cpp(145,1): warning C4715: 'PersonalFactory::createEngine': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  gtest-all.cc
+  gmock-all.cc
+  코드를 생성하고 있습니다...
+  CRA_Prj_mission2.vcxproj -> C:\Users\User\source\repos\CRAExam\CRA_Prj_mission2\x64\Debug\CRA_Prj_mission2.exe

@@ -1,0 +1,9 @@
+﻿  assemble.cpp
+  gtest-all.cc
+  gmock-all.cc
+  코드를 생성하고 있습니다.
+  1801 of 1814 functions (99.3%) were compiled, the rest were copied from previous compilation.
+    132 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  코드를 생성했습니다.
+  CRA_Prj_mission1.vcxproj -> C:\Users\User\source\repos\CRAExam\CRA_Prj_mission1\x64\Release\CRA_Prj_mission1.exe

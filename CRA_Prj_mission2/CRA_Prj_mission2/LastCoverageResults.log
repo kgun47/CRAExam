@@ -1,0 +1,17 @@
+[2025-07-04 13:33:02] [info] Start Program:
+Path:".\\x64\\Debug\\CRA_Prj_mission2.exe"
+Arguments:
+Working directory: not set.
+Modules: Selected: * Excluded: 
+Sources: Selected: C:*.cpp Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: html coverage 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+[2025-07-04 13:33:02] [error] Error: Cannot find path: .\x64\Debug\CRA_Prj_mission2.exe
